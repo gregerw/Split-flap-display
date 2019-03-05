@@ -14,8 +14,8 @@
 
 //Settings for ESP8266-ESP01
 SoftwareSerial Serial1(2, 3); //UART to ESP8266
-char ssid[] = "HSH";            // your network SSID (name)
-char pass[] = "23.2.brendergreger";        // your network password
+char ssid[] = "YOUR SSID";            // your network SSID (name)
+char pass[] = "YOUR PASSWORD TO AP";        // your network password
 #define baudRate 9600 //ESP8266 default is 115200. This produces communication issues. Set baudrate to 9600 via AT-command: "AT+UART_DEF=9600,8,1,0,0"
 int status = WL_IDLE_STATUS;     // the Wifi radio's status
 
