@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Send a gMessage!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JmJ-YO-DSb">
-                                <rect key="frame" x="16" y="50" width="285" height="50"/>
+                                <rect key="frame" x="16" y="50" width="343" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="cWw-vH-2d4"/>
                                 </constraints>
@@ -39,23 +39,23 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZJM-kP-4G2">
-                                <rect key="frame" x="309" y="50" width="50" height="50"/>
+                                <rect key="frame" x="329" y="63" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="4W5-Gv-nW5"/>
-                                    <constraint firstAttribute="height" constant="50" id="6gT-ZP-ww4"/>
+                                    <constraint firstAttribute="height" constant="24" id="Snz-xm-csu"/>
+                                    <constraint firstAttribute="width" constant="24" id="Woa-Vr-LIh"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JmJ-YO-DSb" secondAttribute="trailing" constant="16" id="2qb-Ye-V09"/>
                             <constraint firstItem="pv0-RX-4XZ" firstAttribute="top" secondItem="JmJ-YO-DSb" secondAttribute="bottom" constant="8" id="HIf-YS-Zle"/>
                             <constraint firstItem="pv0-RX-4XZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="OQt-8A-dr8"/>
                             <constraint firstItem="JmJ-YO-DSb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="RIU-sk-btJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pv0-RX-4XZ" secondAttribute="trailing" constant="16" id="Tar-Hf-ZYN"/>
                             <constraint firstItem="JmJ-YO-DSb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="TkD-Mh-1LG"/>
-                            <constraint firstItem="ZJM-kP-4G2" firstAttribute="leading" secondItem="JmJ-YO-DSb" secondAttribute="trailing" constant="8" id="hYX-s3-Qr5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZJM-kP-4G2" secondAttribute="trailing" constant="16" id="ha2-nr-Wj0"/>
-                            <constraint firstItem="ZJM-kP-4G2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="jYG-WE-Raa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZJM-kP-4G2" secondAttribute="trailing" constant="22" id="UTK-W3-ail"/>
+                            <constraint firstItem="JmJ-YO-DSb" firstAttribute="centerY" secondItem="ZJM-kP-4G2" secondAttribute="centerY" id="WvC-nj-O3b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

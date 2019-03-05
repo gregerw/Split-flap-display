@@ -55,7 +55,6 @@ String currentMessage = "";
 #define messageToken "AH6715" //Token for UDP message; All message without the token at beginning will be removed
 #define messageOffTime 23 //after this hour, no more messages will be transfered on display
 #define messageOnTime -1 //from this hour, messages will be transfered until off-time is reached; for always on, use -1
-#define udpAnswerPort 44998 //udp port for the ACK, default 44998
 
 void setup() {
   //setup Serial
@@ -102,35 +101,43 @@ void setup() {
 void loop() {
   //check if time sync with NTP is necessary
   if(lastTimeSync == 0 || (millis() - lastTimeSync > intervallTimeSync * 1000 * 60)) {
+    Serial.println("1 in");
     Serial.println("get time");
     getTimeFromTimeserver();
     lastTimeSync = millis();
+    Serial.println("1 out");
   }
 
   //check if message lifetime is reached
   if(showedMessageSince == 0 || (millis() - showedMessageSince >  lifetimeMessage* 1000)) {
     //lifetime of message is over
+    Serial.println("2 in");
     currentMessage = "";
     distributeMessageToUnits(getTimeString()); //show time
     timePresented = true;
     Serial.println("message lifetime is over. switch to time and release message.");
+    Serial.println("2 out");
   }
   else if((millis() - intervallTimer >  switchIntervallMessageToTime* 1000) && currentMessage.length() > 0 && !timePresented && currentMessage != "!demo!" && switchIntervallMessageToTime >0) { //check if switching intervall is reached and time should be presented
     //show time
+    Serial.println("3 in");
     timePresented = true;
     Serial.println("switch to time");
     distributeMessageToUnits(getTimeString()); //show time
+    Serial.println("3 out");
   }
   else if((millis() - intervallTimer >  switchIntervallMessageToTime* 1000) && currentMessage.length() > 0 && timePresented && currentMessage != "!demo!" && switchIntervallMessageToTime >0) { //check if switching intervall is reached and message should be presented
     //show message
+    Serial.println("4 in");
     timePresented = false;
     Serial.println("switch to message");
     distributeMessageToUnits(currentMessage); //show time
+    Serial.println("4 out");
   }
   // if there's data available, read a packet
   int packetSize = Udp.parsePacket();
   if (packetSize) {
-    
+    Serial.println("5 in");
     Serial.print("Received packet of size ");
     Serial.println(packetSize);
     Serial.print("From ");
@@ -155,7 +162,7 @@ void loop() {
       String utfMessage = convertByteStringToUTFString(udpMessage);
       String token = messageToken;
       if(utfMessage.substring(0,token.length()) == token) {
-        Serial.println("token ok, transfer message to units");
+        Serial.println("token ok");
         showedMessageSince = millis();
         //check for demo keyword !demo!
         if(utfMessage.substring(token.length()) == "!demo!") {
@@ -164,6 +171,7 @@ void loop() {
           Serial.println("show demo");
         }
         else {
+          Serial.println("distribute message to units");
           //send message to units
           timePresented = false;
           currentMessage = utfMessage.substring(token.length());
@@ -172,10 +180,14 @@ void loop() {
       }
     }
     // send a reply, to the IP address and port that sent us the packet we received
-    Serial.println("...sending back ACK");
-    Udp.beginPacket(Udp.remoteIP(),udpAnswerPort);
+    Serial.print("...sending back ACK:");
+    Serial.print(Udp.remoteIP());
+    Serial.print(":");
+    Serial.println(Udp.remotePort());
+    Udp.beginPacket(Udp.remoteIP(),Udp.remotePort()); //udpAnswerPort
     Udp.write(ReplyBuffer);
     Udp.endPacket();
+    Serial.println("5 out");
   }
 }
 
