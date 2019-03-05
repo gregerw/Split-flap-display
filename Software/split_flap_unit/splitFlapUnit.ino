@@ -13,7 +13,7 @@
 #define stepperIn3Pin 10
 #define stepperIn4Pin 11
 #define STEPS 2038 // 28BYJ-48, number of steps; sometimes 2038
-#define CALOFFSET 40 //40 for 01; 100 for 02; 00 for 03; 00 for 04; 00 for 5
+#define CALOFFSET 0 //offset for zero position (black flap)
 #define hallPin 5
 #define amountFlaps 45
 #define correctedSteps 2038
