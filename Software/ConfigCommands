@@ -1,0 +1,8 @@
+Configuration commands
+
+The display can be configured via UDP messages. The following commands are supported:
+
+- "!SWITCHMODE" -> Turns switch mode on/off. If switch mode is on, a submitted message will be shown for the defined lifetime. After that, date/time will be displayed for the lifetime then it switches back to the last message. This will be repeated infinitely. If turned of, message will be delted after lifetime and display will switch back to time/date until a new message arrives
+- "!MULTILINE" -> Turns multi line mode on/off. If turned on, a message > amount units will be splitted in submessages and will be shown split-wise. If turned off, message will be cutted for amount of defined units
+- "!SHOWDATE" -> Turns date mode on/off. If turned on, time and date will be shown. If turned off, only time will be shown
+- "!LIFETIME" -> defines the lifetime of a message in seconds, e.g. "!LIFETIME300" defines a message lifetime of 300s, so after 5 minutes, the message will be deleted and the display will switch back to time/date (expect switchmode is turned on).
