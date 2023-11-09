@@ -1,4 +1,4 @@
 # Split-flap-display
 Self-made split flap display
 
-Find instructions how to build display at https://wordpress.com/view/splitflap.home.blog
+Find instructions how to build display at [https://splitflap.home.blog/](https://splitflap.home.blog/)
